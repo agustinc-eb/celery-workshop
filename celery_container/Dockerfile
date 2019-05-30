@@ -9,5 +9,3 @@ RUN pip install -r requirements.txt
 COPY . .
 
 CMD ["celery", "-A", "tasks", "worker", "--loglevel=info"]
-
-EXPOSE 8000

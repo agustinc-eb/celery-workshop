@@ -16,6 +16,8 @@ services:
         image: celery
         build: ./celery_container
         restart: always
+        volumes:
+            - './celery_container:/app'
         depends_on:
             - redis
             - rabbitmq
