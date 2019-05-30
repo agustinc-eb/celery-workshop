@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+
+    rabbitmq:
+        image: rabbitmq
+        build: ./queue_container
+        restart: always
+
+    redis:
+        image: redis
+        build: ./response_container
+        restart: always
+
+    celery:
+        image: celery
+        build: ./celery_container
+        restart: always
+        depends_on:
+            - redis
+            - rabbitmq
+        links:
+            - redis
+            - rabbitmq
